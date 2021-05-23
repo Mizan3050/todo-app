@@ -31,9 +31,7 @@ export class TaskGroupComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.taskGroup);
     this.id = String.fromCharCode(97 + this.index)
-    console.log(this.id);
   }
 
   addTask(){
