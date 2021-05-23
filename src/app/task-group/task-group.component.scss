@@ -1,0 +1,9 @@
+.list-group-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.list-group-item li {
+    font-size: 20px;
+}
