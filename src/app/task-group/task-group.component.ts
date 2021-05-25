@@ -23,6 +23,9 @@ export class TaskGroupComponent implements OnInit {
 
   @Output() newTaskListEvent = new EventEmitter<NewTask>();
   @Output() deleteTaskEvent = new EventEmitter<DeleteTask>();
+  @Output() deleteTaskGroupEvent = new EventEmitter<number>();
+
+  showConfirm = false;
   id = '';
   taskList: string[] = [];
 
@@ -31,7 +34,7 @@ export class TaskGroupComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.id = String.fromCharCode(97 + this.index)
+    this.id = String.fromCharCode(97 + this.index);
   }
 
   addTask(){
@@ -46,4 +49,9 @@ export class TaskGroupComponent implements OnInit {
     const deleteTaskId = {groupNumber: this.index, taskId: i};
     this.deleteTaskEvent.emit(deleteTaskId);
   }
+
+  deleteTaskGroup(){
+    this.deleteTaskGroupEvent.emit(this.index);
+  }
+
 }

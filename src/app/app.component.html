@@ -23,7 +23,7 @@
   <div *ngFor="let taskGroup of tasks; index as i">
     <div class="row justify-content-md-center mt-4">
       <div class="col-md-10 col-sm-12">
-        <app-task-group [taskGroup]="taskGroup" [index] = 'i' (newTaskListEvent)="newTaskListEvent($event)" (deleteTaskEvent) = "deleteTask($event)"> </app-task-group>
+        <app-task-group [taskGroup]="taskGroup" [index] = 'i' (newTaskListEvent)="newTaskListEvent($event)" (deleteTaskEvent) = "deleteTask($event)" (deleteTaskGroupEvent)="deleteTaskGroup($event)"> </app-task-group>
       </div>
     </div>
   </div>

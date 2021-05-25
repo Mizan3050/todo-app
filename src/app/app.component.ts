@@ -25,7 +25,12 @@ export class AppComponent implements OnInit{
   ];
 
   inputTask = new FormControl('');
+
   ngOnInit(): void {
+    this.loadData();
+  }
+
+  loadData() {
     const localTasks: TaskGroup[] = JSON.parse(localStorage.getItem('tasks') || '{}');
     if(localTasks.length>0) {
       this.tasks.push(...localTasks);
@@ -37,14 +42,14 @@ export class AppComponent implements OnInit{
       const newTaskList:TaskGroup = {title: this.inputTask.value, tasks: []}
       this.tasks.push(newTaskList);
       this.inputTask.reset();
-      localStorage.setItem('tasks', JSON.stringify(this.tasks))
+      localStorage.setItem('tasks', JSON.stringify(this.tasks));
     }
   }
 
   deleteTask(deleteTaskId: DeleteTask){
     const {groupNumber, taskId} = deleteTaskId;
     this.tasks[groupNumber].tasks.splice(taskId, 1);
-    localStorage.setItem('tasks', JSON.stringify(this.tasks))
+    localStorage.setItem('tasks', JSON.stringify(this.tasks));
   }
 
   showAddTaskInput() {
@@ -53,8 +58,12 @@ export class AppComponent implements OnInit{
 
   newTaskListEvent(event: NewTask){
     const {task, index} = event;
-    console.log(event);
     this.tasks[index].tasks.push(task); 
-    localStorage.setItem('tasks', JSON.stringify(this.tasks))
+    localStorage.setItem('tasks', JSON.stringify(this.tasks));
+  }
+
+  deleteTaskGroup(i: number) {
+    this.tasks.splice(i,1);
+    localStorage.setItem('tasks', JSON.stringify(this.tasks));
   }
 }

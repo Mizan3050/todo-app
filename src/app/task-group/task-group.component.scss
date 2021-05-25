@@ -7,3 +7,13 @@
 .list-group-item li {
     font-size: 20px;
 }
+
+.task-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+ .btn-secondary {
+    margin-left: 20px;
+}
