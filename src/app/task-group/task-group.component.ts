@@ -41,8 +41,9 @@ export class TaskGroupComponent implements OnInit {
     this.id = String.fromCharCode(97 + this.index);
     if(this.taskGroup.priority.length){
       this.selectedOption = this.taskGroup.priority;
+    } else {
+      this.selectedOption = this.priorities[2];
     }
-    this.selectedOption = this.priorities[2];
   }
 
   addTask(){
