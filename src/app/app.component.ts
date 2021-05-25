@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { TaskGroup } from './model/taskGroup.mode';
+import { TaskGroup } from './model/taskGroup.model';
 import { DeleteTask, NewTask } from './task-group/task-group.component';
 
 @Component({
@@ -39,9 +39,10 @@ export class AppComponent implements OnInit{
 
   addTaskList(){
     if(this.inputTask.value){
-      const newTaskList:TaskGroup = {title: this.inputTask.value, tasks: []}
+      const newTaskList:TaskGroup = {title: this.inputTask.value, tasks: [], priority: 'low'}
       this.tasks.push(newTaskList);
       this.inputTask.reset();
+      this.showAddTaskList = false;
       localStorage.setItem('tasks', JSON.stringify(this.tasks));
     }
   }
@@ -64,6 +65,12 @@ export class AppComponent implements OnInit{
 
   deleteTaskGroup(i: number) {
     this.tasks.splice(i,1);
+    localStorage.setItem('tasks', JSON.stringify(this.tasks));
+  }
+
+  setPriorityEvent(priorityObj: any) {
+    const { priority, index } = priorityObj;
+    this.tasks[index].priority = priority;
     localStorage.setItem('tasks', JSON.stringify(this.tasks));
   }
 }
