@@ -39,7 +39,10 @@ export class TaskGroupComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = String.fromCharCode(97 + this.index);
-    this.selectedOption = this.taskGroup.priority;
+    if(this.taskGroup.priority.length){
+      this.selectedOption = this.taskGroup.priority;
+    }
+    this.selectedOption = this.priorities[2];
   }
 
   addTask(){
