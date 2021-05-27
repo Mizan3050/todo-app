@@ -1,16 +1,9 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { DeleteTask } from '../interfaces/delete-task.interface';
+import { NewTask } from '../interfaces/new-task.interface';
 import { TaskGroup } from '../model/taskGroup.model';
 
-export interface NewTask {
-  task: any,
-  index: number,
-}
-
-export interface DeleteTask{
-  groupNumber: number;
-  taskId: number
-}
 @Component({
   selector: 'app-task-group',
   templateUrl: './task-group.component.html',
@@ -32,7 +25,7 @@ export class TaskGroupComponent implements OnInit {
 
   inputTask = new FormControl('');
   
-  priorities = ['high', 'medium', 'low'];
+  priorities = ["high", "medium", "low"];
   selectedOption = this.priorities[2];
 
   constructor() { }

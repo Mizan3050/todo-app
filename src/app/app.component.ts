@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { DeleteTask } from './interfaces/delete-task.interface';
+import { NewTask } from './interfaces/new-task.interface';
 import { TaskGroup } from './model/taskGroup.model';
-import { DeleteTask, NewTask } from './task-group/task-group.component';
+
 
 @Component({
   selector: 'app-root',
