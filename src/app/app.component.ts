@@ -26,6 +26,7 @@ export class AppComponent implements OnInit{
     } */
   ];
 
+  // sortedTaskList: TaskGroup[] = [];
   inputTask = new FormControl('');
 
   ngOnInit(): void {
@@ -35,7 +36,8 @@ export class AppComponent implements OnInit{
   loadData() {
     const localTasks: TaskGroup[] = JSON.parse(localStorage.getItem('tasks') || '{}');
     if(localTasks.length>0) {
-      this.tasks.push(...localTasks);
+      const sortedTaskList = this.sortedList(localTasks);
+      this.tasks = sortedTaskList;
     }
   }
 
@@ -74,5 +76,25 @@ export class AppComponent implements OnInit{
     const { priority, index } = priorityObj;
     this.tasks[index].priority = priority;
     localStorage.setItem('tasks', JSON.stringify(this.tasks));
+    this.loadData();
+  }
+
+  sortedList(taskList : TaskGroup[]) {
+    const high: TaskGroup[] = [];
+    const medium: TaskGroup[] = [];
+    const low: TaskGroup[] = [];
+  
+    for(let i = 0; i < taskList.length; i++){
+      if(taskList[i].priority === "high") {
+        high.push(taskList[i]);
+      }
+      else if(taskList[i].priority === "medium") {
+        medium.push(taskList[i]);
+      }
+      else if(taskList[i].priority === "low") {
+        low.push(taskList[i]);
+      }
+    }
+    return [...high, ...medium, ...low];
   }
 }

@@ -12,12 +12,11 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
 }
 
 .actions {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-end;
 }
 
  .btn-success, .btn-primary, .btn-danger {
